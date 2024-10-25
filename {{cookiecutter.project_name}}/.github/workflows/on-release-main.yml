@@ -33,6 +33,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: [set-version]
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
     steps:
       - name: Check out
         uses: actions/checkout@v4
@@ -49,10 +51,9 @@ jobs:
         run: uvx --from build pyproject-build --installer uv
 
       - name: Publish package
-        run: uvx twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: {% raw %}${{ secrets.PYPI_TOKEN }}{% endraw %}
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_TOKEN }}
 {% endif %}
 {%- if cookiecutter.mkdocs == "y" %}
   deploy-docs:
