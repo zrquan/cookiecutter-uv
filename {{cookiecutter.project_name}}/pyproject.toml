@@ -78,6 +78,10 @@ python-version = "3.9"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple"
+default = true
+
 [tool.ruff]
 target-version = "py39"
 line-length = 120
