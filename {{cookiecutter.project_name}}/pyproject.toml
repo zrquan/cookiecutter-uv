@@ -125,6 +125,16 @@ ignore = [
     "E501",
     # DoNotAssignLambda
     "E731",
+    # ambiguous-unicode-character-string
+    "RUF001",
+    # ambiguous-unicode-character-docstring
+    "RUF002",
+    # ambiguous-unicode-character-comment
+    "RUF003",
+    # raise-vanilla-args
+    "TRY003",
+    # function-call-in-default-argument (FastAPI Depends)
+    "B008",
 ]
 
 [tool.ruff.lint.per-file-ignores]
